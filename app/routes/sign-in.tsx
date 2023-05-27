@@ -8,7 +8,6 @@ export default function SignInPage() {
         path="/sign-in"
         routing="path"
         signUpUrl="/sign-up"
-        appearance={{ baseTheme: dark }}
       />
     </div>
   );
