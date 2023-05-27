@@ -1,4 +1,5 @@
 import { SignedIn, SignedOut } from "@clerk/remix";
+import { Link } from "@remix-run/react";
 // Main component using <SignedIn> and <SignedOut>
 //
 // The SignedIn and SignedOut components are used to control rendering depending
@@ -14,6 +15,14 @@ const Main = () => (
     <SignedOut>
       <p className="description">Sign up for an account to get started</p>
     </SignedOut>
+
+    <Link to="/sign-in">
+      Sign In
+    </Link>
+
+    <Link to="/sign-up">
+      Sign Up
+    </Link>
   </main>
 );
 
