@@ -1,3 +1,4 @@
+import { SignedIn } from "@clerk/remix";
 import { getAuth } from "@clerk/remix/ssr.server";
 import type { LoaderFunction } from "@remix-run/node";
 import { redirect } from "@remix-run/node";
@@ -17,6 +18,11 @@ export default function UserProfilePage() {
 
   return (
     <div>
+      Welcome to your profile
+
+      <SignedIn>
+        You Are Signed In
+      </SignedIn>
 
       <Outlet />
     </div>

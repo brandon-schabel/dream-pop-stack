@@ -1,5 +1,4 @@
 import { SignIn } from "@clerk/remix";
-import { dark } from "@clerk/themes";
 
 export default function SignInPage() {
   return (
