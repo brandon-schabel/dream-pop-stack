@@ -11,7 +11,7 @@ concurrency:
 
 jobs:
   format:
-    if: github.repository == 'remix-run/indie-stack'
+    if: github.repository == 'brandon-schabel/dream-pop-stack'
     runs-on: ubuntu-latest
 
     steps:
