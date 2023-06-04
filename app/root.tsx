@@ -1,51 +1,41 @@
-import {
-  ClerkApp,
-  ClerkCatchBoundary,
-} from "@clerk/remix";
-import { rootAuthLoader } from "@clerk/remix/ssr.server";
-import { cssBundleHref } from "@remix-run/css-bundle";
-import type { DataFunctionArgs, LinksFunction, LoaderFunction } from "@remix-run/node";
-import {
-  Links,
-  LiveReload,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-  useLoaderData,
-} from "@remix-run/react";
+import type { LinksFunction, LoaderFunction, V2_MetaFunction } from "@remix-run/node";
 
+import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from "@remix-run/react";
+
+import { rootAuthLoader } from "@clerk/remix/ssr.server";
+// Import ClerkApp
+import { ClerkApp, ClerkCatchBoundary } from "@clerk/remix";
 import stylesheet from "~/tailwind.css";
-export const CatchBoundary = ClerkCatchBoundary();
+import sharedStyles from "./styles/shared.css";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
-  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
+  {
+    rel: "stylesheet",
+    href: sharedStyles,
+  },
 ];
-export const loader = (args: DataFunctionArgs) => {
-  return rootAuthLoader(
-    args,
-    ({ request }) => {
-      const { userId, sessionId, getToken } = request.auth;
-      console.log("Root loader auth:", { userId, sessionId, getToken });
-      return { message: `Hello from the root loader :)` };
-    },
-    { loadUser: true }
-  );
-};
+
+export const meta: V2_MetaFunction = () => [
+  {
+    charset: "utf-8",
+    title: "New Remix App",
+    viewport: "width=device-width,initial-scale=1",
+  },
+];
+
+export const loader: LoaderFunction = (args) => rootAuthLoader(args);
+// add a Catch Boundary
+export const CatchBoundary = ClerkCatchBoundary();
 
 function App() {
-  const { message } = useLoaderData<typeof loader>();
-
   return (
-    <html lang="en" className="h-full">
+    <html lang="en">
       <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         <Links />
       </head>
-      <body className="h-full">
+      <body>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
@@ -54,4 +44,6 @@ function App() {
     </html>
   );
 }
+
+// Wrap your app in ClerkApp(app)
 export default ClerkApp(App);
