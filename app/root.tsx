@@ -14,6 +14,39 @@ export const links: LinksFunction = () => [
     rel: "stylesheet",
     href: sharedStyles,
   },
+  {
+    rel: "stylesheet",
+    href: "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/gray.css",
+  },
+
+  {
+    rel: "stylesheet",
+    href: "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/blue.css",
+  },
+  {
+    rel: "stylesheet",
+    href: "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/green.css",
+  },
+  {
+    rel: "stylesheet",
+    href: "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/red.css",
+  },
+  {
+    rel: "stylesheet",
+    href: "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/grayDark.css",
+  },
+  {
+    rel: "stylesheet",
+    href: "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/blueDark.css",
+  },
+  {
+    rel: "stylesheet",
+    href: "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/greenDark.css",
+  },
+  {
+    rel: "stylesheet",
+    href: "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/redDark.css",
+  },
 ];
 
 export const meta: V2_MetaFunction = () => [
